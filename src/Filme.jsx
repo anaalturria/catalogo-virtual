@@ -1,4 +1,4 @@
-import { Box, Button, Container, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Container, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 function Filme() {
@@ -14,10 +14,10 @@ function Filme() {
 
 
 
-    function Autentica(evento) {
+    function Cadastrar(evento) {
 
         evento.preventDefault();
-        fetch("http://10.139.75.32:8080/filmes", {
+        fetch( process.env.REACT_APP_BACKEND + "filmes", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ function Filme() {
         })
         .then( (resposta) => resposta.json() )
         .then( (json) => { 
-            if( json.titulo) {
+            if( json._id) {
                 setCadastro(true);
                 setErro(false)
             } else {
@@ -61,8 +61,10 @@ function Filme() {
                 flexDirection: "column",
                 alignItems: "center"
             }}>
+                { erro && (<Alert severity="warning">Filme já cadastrado. Tente novamente, por favor!</Alert>)}
+                { cadastro && (<Alert severity="success">Obrigado por cadastrar seu filme!</Alert>)}
             <Typography component="h1" variant='h4'>Filmes</Typography>
-            <Box>
+            <Box component="form" onSubmit={Cadastrar}>
                 <TextField 
                     label="titulo" 
                     variant="filled" 
