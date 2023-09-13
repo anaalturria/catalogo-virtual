@@ -50,8 +50,8 @@ function EditaFilme() {
                     id: id,
                     titulo: titulo,
                     descricao: descricao,
-                    ano: ano,
-                    duracao: duracao, 
+                    ano:"",
+                    duracao: "", 
                     categoria: categoria,
                     imagem: imagem
 

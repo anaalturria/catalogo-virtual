@@ -5,22 +5,22 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './Login';
 import Cadastro from './Cadastro';
-import Filme from './Filme';
+import CadastroP from './CadastrarProduto';
 import EditaFilme from './components/EditaFilme';
 
 const theme = createTheme({
   palette: {
       mode: 'light',
       primary: {
-        main: '#7481f7',
-        light: '#c3cbff',
+        main: '#e41e1e',
+        light: '#bd233c',
       },
       secondary: {
         main: '#ff50a3',
       },
       error: {
         main: '#e41e1e',
-        dark: '#e41e1e',
+        dark: '#e41ee',
       },
       success: {
         main: '#2dce33',
@@ -42,8 +42,8 @@ const router = createBrowserRouter([
     element: <Cadastro/>
   },
   {
-    path: "/Filme",
-    element: <Filme/>
+    path: "/produto",
+    element: <CadastroP/>
   },
   {
     path: "/edicao/:id",

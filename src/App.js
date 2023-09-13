@@ -1,6 +1,7 @@
 import { Avatar, Button, Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import Filmes from "./components/Filmes";
+import Bibliotecafundo from "./components/img/bfundo.webp";
 
 
 

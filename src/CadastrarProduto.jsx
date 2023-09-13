@@ -1,7 +1,8 @@
 import { Alert, Box, Button, Container, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import Style from "./CadastrarProduto.module.css";
 
-function Filme() {
+function CadastrarProduto() {
 
     const [ titulo, setTitulo ] = useState("");
     const [ descricao, setDescricao ] = useState("");
@@ -26,8 +27,8 @@ function Filme() {
                 {
                     titulo: titulo,
                     descricao: descricao,
-                    ano: ano,
-                    duracao: duracao, 
+                    ano: "",
+                    duracao: "", 
                     categoria: categoria,
                     imagem: imagem
 
@@ -54,7 +55,8 @@ function Filme() {
         <Box 
             sx={{
                 mt: 10, 
-                backgroundColor: "#B8C7EA",
+                backgroundColor: "#424242",
+                color: "white",
                 padding: "50px",
                 borderRadius: "10px",
                 display: "flex",
@@ -63,7 +65,7 @@ function Filme() {
             }}>
                 { erro && (<Alert severity="warning">Filme já cadastrado. Tente novamente, por favor!</Alert>)}
                 { cadastro && (<Alert severity="success">Obrigado por cadastrar seu filme!</Alert>)}
-            <Typography component="h1" variant='h4'>Filmes</Typography>
+            <Typography component="h1" variant='h4'>Livros</Typography>
             <Box component="form" onSubmit={Cadastrar}>
                 <TextField 
                     label="titulo" 
@@ -81,22 +83,6 @@ function Filme() {
                     fullWidth 
                     value={descricao} 
                     onChange={ (e) => setDescricao( e.target.value)}></TextField>
-                <TextField 
-                    label="ano" 
-                    variant="filled" 
-                    type="text" 
-                    margin="normal" 
-                    fullWidth 
-                    value={ano} 
-                    onChange={ (e) => setAno( e.target.value)}></TextField>
-                <TextField 
-                    label="duração" 
-                    variant="filled" 
-                    type="text" 
-                    margin="normal" 
-                    fullWidth 
-                    value={duracao} 
-                    onChange={ (e) => setDuracao( e.target.value)}></TextField>
                 <TextField 
                     label="categoria" 
                     variant="filled" 
@@ -119,7 +105,7 @@ function Filme() {
                         margin: "0 auto"
                     }
                 }>
-                    <img src={imagem} alt={titulo} style={{width: "100%" } }></img>
+                    <img src={imagem}  style={{width: "100%" } }></img>
                 </Box>
                 <Button type="submit" variant="contained" fullWidth sx={ {mt: 2, mb: 2 } }>Enviar</Button>
             </Box>
@@ -130,4 +116,4 @@ function Filme() {
   )
 };
 
-export default Filme;
+export default CadastrarProduto;
