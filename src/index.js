@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './Login';
 import Cadastro from './Cadastro';
 import Filme from './Filme';
+import EditaFilme from './components/EditaFilme';
 
 const theme = createTheme({
   palette: {
@@ -43,7 +44,12 @@ const router = createBrowserRouter([
   {
     path: "/Filme",
     element: <Filme/>
+  },
+  {
+    path: "/edicao/:id",
+    element: <EditaFilme/>
   }
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
