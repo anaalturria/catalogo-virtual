@@ -60,7 +60,7 @@ function Login() {
         <Box 
         sx={{
                 mt: 10, 
-                backgroundColor: "#B8C7EA",
+                backgroundColor: "rgba(0, 0, 0, 0.83);",
                 padding: "50px",
                 borderRadius: "10px",
                 display: "flex",
@@ -68,22 +68,23 @@ function Login() {
                 alignItems: "center"
             }}
             >
-            <Typography component="h1" variant='h4'>Entrar</Typography>
+            <Typography component="h1" variant='h4' sx={{color:"white"}}>Entrar</Typography>
             { erro && ( <Alert  severity="warning">Revise seus dados e tente novamente.</Alert> ) }
             <Box component="form" onSubmit={Autenticar}>
-                <TextField { ...erro && ("error")} label="Email" variant="filled" type="email" margin="normal" fullWidth value={email} onChange={ (e) => setEmail( e.target.value)}/>
-                <TextField label="senha" variant="filled" type="password" margin="normal" fullWidth value={senha} onChange={ (e) => setSenha( e.target.value)}/>
+                <TextField { ...erro && ("error")} label="Email" variant="filled" type="email" margin="normal" fullWidth value={email} onChange={ (e) => setEmail( e.target.value)} sx={{background:"rgba(74, 74, 74, 0.83)"}}/>
+                <TextField label="senha" variant="filled" type="password" margin="normal" fullWidth value={senha} onChange={ (e) => setSenha( e.target.value)} sx={{background:"rgba(74, 74, 74, 0.83)"}}/>
                 <FormControlLabel
+                sx={{color:"white"}}
                     control={<Checkbox value={lembrar} name="lembrar" onChange={(e) => setLembrar(!lembrar)}/>}
                     label="Lembrar-me"
                 />
 
                 <Button type="submit" variant="contained" fullWidth sx={ {mt: 2, mb: 2 } }>Login</Button>
                 <Grid container>
-                    <Grid item xs>
+                    <Grid item xs sx={{color:"white"}}>
                         Esqueci minha senha
                     </Grid>
-                    <Grid item>
+                    <Grid item sx={{color:"white"}}>
                         Cadastrar
                     </Grid>
                 </Grid>

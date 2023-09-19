@@ -1,8 +1,11 @@
 import { Alert, Box, Button, Container, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import Fotona from './img/BIBLIOTECAOLD.jpg';
 
 function EditaFilme() {
+
+    document.body.style.backgroundImage = "url("+ Fotona + ")";
 
     const { id } = useParams();
     const [ titulo, setTitulo ] = useState("");
@@ -78,7 +81,7 @@ function EditaFilme() {
             <Box 
                 sx={{
                 mt: 10, 
-                backgroundColor: "#B8C7EA",
+                backgroundColor: "rgba(0, 0, 0, 0.83)",
                 padding: "50px",
                 borderRadius: "10px",
                 display: "flex",
@@ -95,7 +98,10 @@ function EditaFilme() {
                             margin="normal" 
                             fullWidth 
                             value={titulo} 
-                            onChange={ (e) => setTitulo( e.target.value)}></TextField>
+                            onChange={ (e) => setTitulo( e.target.value)}
+                            sx={{
+                                background:"rgba(74, 74, 74, 0.83);",
+                            }}></TextField>
                         <TextField 
                             label="descricao" 
                             variant="filled" 
@@ -103,7 +109,10 @@ function EditaFilme() {
                             margin="normal" 
                             fullWidth 
                             value={descricao} 
-                            onChange={ (e) => setDescricao( e.target.value)}></TextField>
+                            onChange={ (e) => setDescricao( e.target.value)}
+                            sx={{
+                                background:"rgba(74, 74, 74, 0.83);",
+                            }}></TextField>
                         <TextField 
                             label="ano" 
                             variant="filled" 
@@ -111,7 +120,10 @@ function EditaFilme() {
                             margin="normal" 
                             fullWidth 
                             value={ano} 
-                            onChange={ (e) => setAno( e.target.value)}></TextField>
+                            onChange={ (e) => setAno( e.target.value)}
+                            sx={{
+                                background:"rgba(74, 74, 74, 0.83);",
+                            }}></TextField>
                         <TextField 
                             label="duração" 
                             variant="filled" 
@@ -119,7 +131,10 @@ function EditaFilme() {
                             margin="normal" 
                             fullWidth 
                             value={duracao} 
-                            onChange={ (e) => setDuracao( e.target.value)}></TextField>
+                            onChange={ (e) => setDuracao( e.target.value)}
+                            sx={{
+                                background:"rgba(74, 74, 74, 0.83);",
+                            }}></TextField>
                         <TextField 
                             label="categoria" 
                             variant="filled" 
@@ -127,7 +142,10 @@ function EditaFilme() {
                             margin="normal" 
                             fullWidth 
                             value={categoria} 
-                            onChange={ (e) => setCategoria( e.target.value)}></TextField>
+                            onChange={ (e) => setCategoria( e.target.value)}
+                            sx={{
+                                background:"rgba(74, 74, 74, 0.83);",
+                            }}></TextField>
                         <TextField 
                             label="Insira seu link" 
                             variant="filled" 
@@ -135,7 +153,10 @@ function EditaFilme() {
                             margin="normal" 
                             fullWidth 
                             value={imagem} 
-                            onChange={ (e) => setImagem( e.target.value)}></TextField> 
+                            onChange={ (e) => setImagem( e.target.value)}
+                            sx={{
+                                background:"rgba(74, 74, 74, 0.83);",
+                            }}></TextField> 
                         <Box component="figure" 
                             sx={{
                                 width:"250px",

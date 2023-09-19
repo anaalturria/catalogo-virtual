@@ -58,27 +58,27 @@ function Cadastro() {
         <Box
             sx={{
                 mt: 10, 
-                backgroundColor: "#B8C7EA",
+                backgroundColor: "rgba(0, 0, 0, 0.83);",
                 padding: "50px",
                 borderRadius: "10px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center"
             }}>
-            <Typography component="h1" variant='h4'>Faça seu cadastro</Typography>
+            <Typography component="h1" variant='h4' sx={{color:"white"}}>Faça seu cadastro</Typography>
 
             { erro && ( <Alert severity="warning">Desculpe, tente novamente.</Alert>)}
             { cadastro && ( <Alert severity="success">Cadastro realizado com sucesso.</Alert>)}
 
             <Box component="form" onSubmit={Cadastrar}>
-                <TextField label="nome" variant="filled" type="text" margin="normal" fullWidth value={nome} onChange={ (e) => setNome( e.target.value)}/>
-                <TextField label="Email" variant="filled" type="email" margin="normal" fullWidth value={email} onChange={ (e) => setEmail( e.target.value)}/>
-                <TextField label="senha" variant="filled" type="password" margin="normal" fullWidth value={senha} onChange={ (e) => setSenha( e.target.value)}/>
-                <TextField label="telefone" variant="filled" type="text" margin="normal" fullWidth value={telefone} onChange={ (e) => setTelefone( e.target.value)}/>
-                <TextField label="cpf" variant="filled" type="text" margin="normal" fullWidth value={cpf} onChange={ (e) => setCpf( e.target.value)}/>
+                <TextField label="nome" variant="filled" type="text" margin="normal" fullWidth value={nome} onChange={ (e) => setNome( e.target.value)} sx={{background:"rgba(74, 74, 74, 0.83)"}}/>
+                <TextField label="Email" variant="filled" type="email" margin="normal" fullWidth value={email} onChange={ (e) => setEmail( e.target.value)} sx={{background:"rgba(74, 74, 74, 0.83)"}}/>
+                <TextField label="senha" variant="filled" type="password" margin="normal" fullWidth value={senha} onChange={ (e) => setSenha( e.target.value)} sx={{background:"rgba(74, 74, 74, 0.83)"}}/>
+                <TextField label="telefone" variant="filled" type="text" margin="normal" fullWidth value={telefone} onChange={ (e) => setTelefone( e.target.value)} sx={{background:"rgba(74, 74, 74, 0.83)"}}/>
+                <TextField label="cpf" variant="filled" type="text" margin="normal" fullWidth value={cpf} onChange={ (e) => setCpf( e.target.value)} sx={{background:"rgba(74, 74, 74, 0.83)"}}/>
                 <Button type="submit" variant="contained" fullWidth sx={ {mt: 2, mb: 2 } }>Cadastrar</Button>
                 <Grid container>
-                    <Grid>
+                    <Grid sx={{color:"white"}}>
                         Já tenho cadastro
                     </Grid>
                 </Grid>

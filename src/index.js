@@ -20,7 +20,7 @@ const theme = createTheme({
       },
       error: {
         main: '#e41e1e',
-        dark: '#e41ee',
+        dark: 'white',
       },
       success: {
         main: '#2dce33',

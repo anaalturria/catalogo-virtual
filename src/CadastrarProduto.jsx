@@ -1,8 +1,12 @@
 import { Alert, Box, Button, Container, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import Style from "./CadastrarProduto.module.css";
+import Foto from "./components/img/BIBLIOTECAOLD.jpg";
+
+
 
 function CadastrarProduto() {
+
+    document.body.style.backgroundImage = "url("+ Foto + ")";
 
     const [ titulo, setTitulo ] = useState("");
     const [ descricao, setDescricao ] = useState("");
@@ -12,8 +16,6 @@ function CadastrarProduto() {
     const [ imagem, setImagem ] = useState ("");
     const [ cadastro, setCadastro ] = useState( false );
     const [ erro, setErro ] = useState( false );
-
-
 
     function Cadastrar(evento) {
 
@@ -51,11 +53,12 @@ function CadastrarProduto() {
 
 
   return (
-    <Container omponent="section" maxWidth="sm">
+    
+    <Container omponent="section" maxWidth="sm" >
         <Box 
             sx={{
                 mt: 10, 
-                backgroundColor: "#424242",
+                background: " rgba(0, 0, 0, 0.83);",
                 color: "white",
                 padding: "50px",
                 borderRadius: "10px",
@@ -63,18 +66,22 @@ function CadastrarProduto() {
                 flexDirection: "column",
                 alignItems: "center"
             }}>
-                { erro && (<Alert severity="warning">Filme já cadastrado. Tente novamente, por favor!</Alert>)}
-                { cadastro && (<Alert severity="success">Obrigado por cadastrar seu filme!</Alert>)}
-            <Typography component="h1" variant='h4'>Livros</Typography>
+                { erro && (<Alert severity="warning">Livro já cadastrado. Tente novamente, por favor!</Alert>)}
+                { cadastro && (<Alert severity="success">Obrigado por cadastrar seu livro!</Alert>)}
+            <Typography component="h1" variant='h4'>Livro</Typography>
             <Box component="form" onSubmit={Cadastrar}>
                 <TextField 
+                    
                     label="titulo" 
                     variant="filled" 
                     type="text" 
                     margin="normal" 
                     fullWidth 
                     value={titulo} 
-                    onChange={ (e) => setTitulo( e.target.value)}></TextField>
+                    onChange={ (e) => setTitulo( e.target.value)}
+                    sx={{
+                        background:"rgba(74, 74, 74, 0.83);",
+                    }}></TextField>
                 <TextField 
                     label="descricao" 
                     variant="filled" 
@@ -82,7 +89,10 @@ function CadastrarProduto() {
                     margin="normal" 
                     fullWidth 
                     value={descricao} 
-                    onChange={ (e) => setDescricao( e.target.value)}></TextField>
+                    onChange={ (e) => setDescricao( e.target.value)}
+                    sx={{
+                        background:"rgba(74, 74, 74, 0.83);",
+                    }}></TextField>
                 <TextField 
                     label="categoria" 
                     variant="filled" 
@@ -90,7 +100,10 @@ function CadastrarProduto() {
                     margin="normal" 
                     fullWidth 
                     value={categoria} 
-                    onChange={ (e) => setCategoria( e.target.value)}></TextField>
+                    onChange={ (e) => setCategoria( e.target.value)}
+                    sx={{
+                        background:"rgba(74, 74, 74, 0.83);",
+                    }}></TextField>
                 <TextField 
                     label="Insira seu link" 
                     variant="filled" 
@@ -98,21 +111,24 @@ function CadastrarProduto() {
                     margin="normal" 
                     fullWidth 
                     value={imagem} 
-                    onChange={ (e) => setImagem( e.target.value)}></TextField> 
+                    onChange={ (e) => setImagem( e.target.value)}
+                    sx={{
+                        background:"rgba(74, 74, 74, 0.83);",
+                    }}></TextField> 
                 <Box component="figure" sx={
                     {
                         width:"250px",
                         margin: "0 auto"
                     }
                 }>
-                    <img src={imagem}  style={{width: "100%" } }></img>
+                    <img src={imagem}  style={{width: "100%",  } }></img>
                 </Box>
                 <Button type="submit" variant="contained" fullWidth sx={ {mt: 2, mb: 2 } }>Enviar</Button>
             </Box>
 
         </Box>
     </Container>
-
+    
   )
 };
 
