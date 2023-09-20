@@ -76,9 +76,7 @@ function MenuResponsivo() {
                             display: { xs: 'block', md: 'none' },
                         }}
                     >
-                        <MenuItem>
-                        <Link>Cadastrar livro</Link>
-                        </MenuItem>
+                        
                     </Menu>
                </Box>
                <Typography
@@ -102,8 +100,8 @@ function MenuResponsivo() {
                 <Link href="/produto">
                     <Button
                         onClick={handleCloseNavMenu}
-                        sx={{ my: 2, color: 'white', display: 'block' }}
-                    >Cadastrar livros
+                        sx={{ my: 2, color: 'red', display: 'block',  }}
+                        >Cadastrar livros
                     </Button>  
                     </Link>
                 </Box>

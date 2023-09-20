@@ -1,5 +1,5 @@
 import { Alert, Box, Button, Container, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Foto from "./components/img/BIBLIOTECAOLD.jpg";
 
 
@@ -14,13 +14,13 @@ function CadastrarProduto() {
     const [ duracao, setDuracao ] = useState("");
     const [ categoria, setCategoria ] = useState("");
     const [ imagem, setImagem ] = useState ("");
-    const [ cadastro, setCadastro ] = useState( false );
+    const [ enviar, setEnviar ] = useState( false );
     const [ erro, setErro ] = useState( false );
 
     function Cadastrar(evento) {
 
         evento.preventDefault();
-        fetch( process.env.REACT_APP_BACKEND + "filmes", {
+        fetch( process.env.REACT_APP_BACKEND + "produtos", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -32,7 +32,8 @@ function CadastrarProduto() {
                     ano: "",
                     duracao: "", 
                     categoria: categoria,
-                    imagem: imagem
+                    imagem: imagem,
+                    usuario: localStorage.getItem("usuario")
 
                 }
             )
@@ -40,17 +41,24 @@ function CadastrarProduto() {
         .then( (resposta) => resposta.json() )
         .then( (json) => { 
             if( json._id) {
-                setCadastro(true);
+                setEnviar(true);
                 setErro(false)
             } else {
                 setErro(true);
-                setCadastro(false)
+                setEnviar(false)
             }
         })
         .catch( (erro) => { setErro(true)})
     }
 
-
+    useEffect( () => {
+        setTitulo("");
+        setDescricao("");
+        setAno("");
+        setDuracao("");
+        setCategoria("");
+        setImagem("");
+    },[enviar]);
 
   return (
     
@@ -67,7 +75,7 @@ function CadastrarProduto() {
                 alignItems: "center"
             }}>
                 { erro && (<Alert severity="warning">Livro já cadastrado. Tente novamente, por favor!</Alert>)}
-                { cadastro && (<Alert severity="success">Obrigado por cadastrar seu livro!</Alert>)}
+                { enviar && (<Alert severity="success">Obrigado por cadastrar seu livro!</Alert>)}
             <Typography component="h1" variant='h4'>Livro</Typography>
             <Box component="form" onSubmit={Cadastrar}>
                 <TextField 

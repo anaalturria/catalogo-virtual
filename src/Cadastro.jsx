@@ -1,8 +1,10 @@
-import { Alert, Box, Button, Checkbox, Container, FormControlLabel, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Checkbox, Container, FormControlLabel, Grid, Link, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+
 
 function Cadastro() {
 
+    document.body.style.backgroundColor = "rgba(0, 0, 0, 0.83)";
     const [ nome, setNome] = useState( "" );
     const[ email, setEmail ] = useState("");
     const[ senha, setSenha ] = useState("");
@@ -14,7 +16,7 @@ function Cadastro() {
     function Cadastrar(evento) {
 
         evento.preventDefault();
-        fetch( process.env.REACT_APP_BACKEND + "users", {
+        fetch( process.env.REACT_APP_BACKEND + "usuarios", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -54,11 +56,13 @@ function Cadastro() {
 
 
   return (
+    <>
   <Container omponent="section" maxWidth="xs">
+
         <Box
             sx={{
                 mt: 10, 
-                backgroundColor: "rgba(0, 0, 0, 0.83);",
+                backgroundColor: "#181818",
                 padding: "50px",
                 borderRadius: "10px",
                 display: "flex",
@@ -79,13 +83,13 @@ function Cadastro() {
                 <Button type="submit" variant="contained" fullWidth sx={ {mt: 2, mb: 2 } }>Cadastrar</Button>
                 <Grid container>
                     <Grid sx={{color:"white"}}>
-                        Já tenho cadastro
+                        <Link href='/Login' sx={{color:"white"}}>Já tenho cadastro</Link>
                     </Grid>
                 </Grid>
             </Box>
         </Box>
   </Container>
-    
+  </>
   )
 };
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Fotona from './img/BIBLIOTECAOLD.jpg';
 
-function EditaFilme() {
+function EditaLivro() {
 
     document.body.style.backgroundImage = "url("+ Fotona + ")";
 
@@ -16,9 +16,10 @@ function EditaFilme() {
     const [ imagem, setImagem ] = useState ("");
     const [ edita, setEdita ] = useState( false );
     const [ erro, setErro ] = useState( false );
+    const usuario = localStorage.getItem("usuario");
 
     useEffect( () => {
-        fetch( process.env.REACT_APP_BACKEND + "filmes/" + id, {
+        fetch( process.env.REACT_APP_BACKEND + "produtos/" + usuario + "/" + id, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
@@ -43,7 +44,7 @@ function EditaFilme() {
 
     function Editar(evento) {
         evento.preventDefault();
-        fetch( process.env.REACT_APP_BACKEND + "filmes/", {
+        fetch( process.env.REACT_APP_BACKEND + "produtos/", {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
@@ -53,10 +54,11 @@ function EditaFilme() {
                     id: id,
                     titulo: titulo,
                     descricao: descricao,
-                    ano:"",
+                    ano: "",
                     duracao: "", 
                     categoria: categoria,
-                    imagem: imagem
+                    imagem: imagem,
+                    usuario: localStorage.getItem("usuario")
 
                 }
             )
@@ -64,7 +66,7 @@ function EditaFilme() {
         })
         .then( (resposta) => resposta.json() )
         .then( (json) => { 
-            if( !json._id ) {
+            if( json._id ) {
                 setEdita(true);
                 setErro(false);
             } else {
@@ -89,7 +91,7 @@ function EditaFilme() {
                 alignItems: "center"
             }}>
                 { erro && ( <Alert severity="warning">{erro}</Alert>)}
-                { edita && ( <Alert severity="seccess">Filme Editado</Alert>)}
+                { edita && ( <Alert severity="success">Filme Editado</Alert>)}
                     <Box component="form" onSubmit={Editar}>
                         <TextField
                             label="titulo" 
@@ -113,28 +115,7 @@ function EditaFilme() {
                             sx={{
                                 background:"rgba(74, 74, 74, 0.83);",
                             }}></TextField>
-                        <TextField 
-                            label="ano" 
-                            variant="filled" 
-                            type="text" 
-                            margin="normal" 
-                            fullWidth 
-                            value={ano} 
-                            onChange={ (e) => setAno( e.target.value)}
-                            sx={{
-                                background:"rgba(74, 74, 74, 0.83);",
-                            }}></TextField>
-                        <TextField 
-                            label="duração" 
-                            variant="filled" 
-                            type="text" 
-                            margin="normal" 
-                            fullWidth 
-                            value={duracao} 
-                            onChange={ (e) => setDuracao( e.target.value)}
-                            sx={{
-                                background:"rgba(74, 74, 74, 0.83);",
-                            }}></TextField>
+                        
                         <TextField 
                             label="categoria" 
                             variant="filled" 
@@ -172,4 +153,4 @@ function EditaFilme() {
   )
 }
 
-export default EditaFilme
+export default EditaLivro;

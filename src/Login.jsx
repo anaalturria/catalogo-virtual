@@ -1,4 +1,4 @@
-import { Alert, Box, Button, Checkbox, Container, FormControlLabel, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Checkbox, Container, FormControlLabel, Grid, Link, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect } from 'react';
@@ -8,6 +8,8 @@ import { useNavigate, json } from 'react-router-dom';
 /* se o login for verdadeiro, limpa os campos e envia o usuario para outra pagina*/
 
 function Login() {
+
+    document.body.style.backgroundColor = "rgba(0, 0, 0, 0.83)";
 
     const[ email, setEmail ] = useState("");
     const[ senha, setSenha ] = useState("");
@@ -19,7 +21,6 @@ function Login() {
     useEffect( () => {
 
         if ( login ) {
-            localStorage.setItem( "usuario", JSON.stringify( { email: email } ) );
             setEmail("");
             setSenha("");
             navigate( "/" );
@@ -45,9 +46,14 @@ function Login() {
         })
         .then( (resposta) => resposta.json() )
         .then( (json) => { 
+
+            
+
             if( json.user ) {
+                localStorage.setItem("usuario" , JSON.stringify( json.user._id ) );
                 setLogin(true); 
             } else {
+                localStorage.removeItem("usuario");
                 setErro(true);
             }
         })
@@ -60,7 +66,7 @@ function Login() {
         <Box 
         sx={{
                 mt: 10, 
-                backgroundColor: "rgba(0, 0, 0, 0.83);",
+                backgroundColor: "#181818",
                 padding: "50px",
                 borderRadius: "10px",
                 display: "flex",
@@ -84,8 +90,8 @@ function Login() {
                     <Grid item xs sx={{color:"white"}}>
                         Esqueci minha senha
                     </Grid>
-                    <Grid item sx={{color:"white"}}>
-                        Cadastrar
+                    <Grid item >
+                        <Link sx={{color:"white"}} href='/Cadastro'>Cadastrar</Link>
                     </Grid>
                 </Grid>
             </Box>
