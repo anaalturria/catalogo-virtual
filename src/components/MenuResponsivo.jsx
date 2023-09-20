@@ -75,8 +75,9 @@ function MenuResponsivo() {
                         sx={{
                             display: { xs: 'block', md: 'none' },
                         }}
+                       
                     >
-                        
+                        <Link  href="/produto">Cadastrar Livros</Link>
                     </Menu>
                </Box>
                <Typography
